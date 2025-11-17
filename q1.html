@@ -1,11 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Image Slider</title>
+
+    <style>
+        .slider-container {
+            width: 400px;
+            margin: 40px auto;
+            text-align: center;
+
+        }
+
+        .slider {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgb(0, 0, 0);
+        }
+
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .controls {
+            margin-top: 10px;
+        }
+
+        .controls button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .controls button:hover {
+            background: #555;
+        }
+    </style>
+
 </head>
+
 <body>
-    <script src="q1.js"></script>
+
+    <div class="slider-container">
+        <div class="slider">
+            <img id="slide"
+                src="https://cdn.pixabay.com/photo/2016/11/21/06/53/beautiful-natural-image-1844362_640.jpg">
+        </div>
+
+        <div class="controls">
+            <button onclick="prevSlide()">Prev</button>
+            <button onclick="nextSlide()">Next</button>
+        </div>
+    </div>
+
+    <script>
+        const images = [
+            "https://cdn.pixabay.com/photo/2016/11/21/06/53/beautiful-natural-image-1844362_640.jpg",
+            "https://png.pngtree.com/thumb_back/fh260/background/20240522/pngtree-abstract-cloudy-background-beautiful-natural-streaks-of-sky-and-clouds-red-image_15684333.jpg",
+            "https://images.pexels.com/photos/8198949/pexels-photo-8198949.jpeg?cs=srgb&dl=pexels-rhys-abel-2233101-8198949.jpg&fm=jpg"
+        ];
+
+        let index = 0;
+
+        function showSlide() {
+            document.getElementById("slide").src = images[index];
+        }
+
+        function nextSlide() {
+            index = (index + 1) % images.length;
+            showSlide();
+        }
+
+        function prevSlide() {
+            index = (index - 1 + images.length) % images.length;
+            showSlide();
+        }
+    </script>
+
 </body>
+
 </html>
